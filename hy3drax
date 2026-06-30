@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>HY3DRAX — Not just clothing, it's a cod3.</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+ body {
+ background: #0a0a0a;
+ color: #f0f0f0;
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+ line-height: 1.6;
+ overflow-x: hidden;
+ }
+
+:root {
+ --indigo: #2d2b55;
+ --indigo-light: #5a57a8;
+ --emerald: #0f5e3f;
+ --emerald-light: #1a9d6b;
+ --black: #0a0a0a;
+ --white: #f0f0f0;
+ --gray: #888;
+ }
+
+ @keyframes glitch {
+ 0% { transform: translate(0); }
+ 20% { transform: translate(-2px, 2px); }
+ 40% { transform: translate(2px, -1px); }
+ 60% { transform: translate(-1px, 1px); }
+ 80% { transform: translate(1px, -2px); }
+ 100% { transform: translate(0); }
+ }
+
+ @keyframes pulse-glow {
+ 0%, 100% { filter: drop-shadow(0 0 8px rgba(90,87,168,0.3)); }
+ 50% { filter: drop-shadow(0 0 20px rgba(26,157,107,0.5)); }
+ }
+
+.glitch-text {
+ display: inline-block;
+ animation: glitch 0.3s infinite;
+ position: relative;
+ }
+
+.glitch-text::before,
+.glitch-text::after {
+ content: attr(data-text);
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ opacity: 0.7;
+ }
+
+.glitch-text::before {
+ color: var(--indigo-light);
+ z-index: -1;
+ transform: translate(-2px, 0);
+ }
+
+.glitch-text::after {
+ color: var(--emerald-light);
+ z-index: -2;
+ transform: translate(2px, 0);
+ }
+
+.container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+
+ section {
+ padding: 80px 0;
+ border-bottom: 1px solid rgba(255,255,255,0.05);
+ }
+
+ /* header */
+ header {
+ padding: 24px 0;
+ position: sticky;
+ top: 0;
+ background: rgba(10,10,10,0.85);
+ backdrop-filter: blur(8px);
+ z-index: 10;
+ border-bottom: 1px solid rgba(255,255,255,0.05);
+ }
+
+ nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+.logo-wordmark {
+ font-size: 1.6rem;
+ font-weight: 700;
+ letter-spacing: 6px;
+ text-transform: lowercase;
+ color: var(--white);
+ }
+
+.logo-wordmark span {
+ color: var(--emerald-light);
+ }
+
+.nav-links {
+ display: flex;
+ gap: 32px;
+ list-style: none;
+ }
+
+.nav-links a {
+ color: var(--gray);
+ text-decoration: none;
+ font-size: 0.9rem;
+ letter-spacing: 1px;
+ text-transform: uppercase;
+ transition: color 0.3s;
+ }
+
+.nav-links a:hover {
+ color: var(--white);
+ }
+
+ /* hero */
+.hero {
+ min-height: 85vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ position: relative;
+ }
+
+.hero-logo {
+ width: 200px;
+ height: auto;
+ margin-bottom: 32px;
+ animation: pulse-glow 3s ease-in-out infinite;
+ }
+
+.hero-logo svg {
+ width: 100%;
+ height: auto;
+ }
+
+.hero h1 {
+ font-size: clamp(2.5rem, 10vw, 6rem);
+ font-weight: 800;
+ letter-spacing: 10px;
+ text-transform: lowercase;
+ line-height: 1;
+ margin-bottom: 16px;
+ }
+
+.hero h1.indigo {
+ color: var(--indigo-light);
+ }
+
+.hero h1.emerald {
+ color: var(--emerald-light);
+ }
+
+.hero.slogan {
+ font-size: 1.1rem;
+ letter-spacing: 5px;
+ text-transform: uppercase;
+ color: var(--gray);
+ margin-bottom: 32px;
+ }
+
+.hero.tagline {
+ font-size: 0.9rem;
+ color: var(--gray);
+ letter-spacing: 2px;
+ max-width: 500px;
+ opacity: 0.7;
+ }
+
+.hero.tagline em {
+ color: var(--emerald-light);
+ font-style: normal;
+ }
+
+ /* transmission */
+.transmission {
+ background: linear-gradient(135deg, rgba(45,43,85,0.15), rgba(15,94,63,0.1));
+ border-radius: 16px;
+ padding: 48px;
+ margin: 40px 0;
+ }
+
+.transmission h2 {
+ font-size: 2rem;
+ letter-spacing: 4px;
+ text-transform: uppercase;
+ margin-bottom: 24px;
+ color: var(--white);
+ }
+
+.transmission h2 span {
+ color: var(--indigo-light);
+ }
+
+.transmission p {
+ color: var(--gray);
+ max-width: 700px;
+ font-size: 1.05rem;
+ }
+
+ /* collections */
+.collections-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 32px;
+ margin-top: 48px;
+ }
+
+.collection-card {
+ background: #111;
+ border: 1px solid rgba(255,255,255,0.06);
+ border-radius: 12px;
+ padding: 32px 24px;
+ transition: all 0.3s;
+ position: relative;
+ overflow: hidden;
+ }
+
+.collection-card::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 4px;
+ background: var(--indigo);
+ transition: background 0.3s;
+ }
+
+.collection-card:nth-child(2)::before {
+ background: var(--emerald);
+ }
+
+.collection-card:nth-child(3)::before {
+ background: var(--indigo-light);
+ }
+
+.collection-card:nth-child(4)::before {
+ background: var(--emerald-light);
+ }
+
+.collection-card:hover {
+ border-color: rgba(255,255,255,0.15);
+ transform: translateY(-4px);
+ }
+
+.collection-card h3 {
+ font-size: 1.4rem;
+ letter-spacing: 3px;
+ text-transform: uppercase;
+ margin-bottom: 8px;
+ }
+
+.collection-card p {
+ color: var(--gray);
+ font-size: 0.9rem;
+ letter-spacing: 1px;
+ }
+
+.collection-card.season {
+ display: inline-block;
+ margin-top: 16px;
+ font-size: 0.75rem;
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ padding: 4px 12px;
+ border: 1px solid var(--gray);
+ border-radius: 20px;
+ color: var(--gray);
+ }
+
+ /* contact */
+.contact-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 32px;
+ margin-top: 48px;
+ }
+
+.contact-item {
+ background: #111;
+ border: 1px solid rgba(255,255,255,0.06);
+ border-radius: 12px;
+ padding: 24px;
+ text-align: center;
+ transition: border-color 0.3s;
+ }
+
+.contact-item:hover {
+ border-color: rgba(255,255,255,0.15);
+ }
+
+.contact-item.label {
+ font-size: 0.75rem;
+ letter-spacing: 3px;
+ text-transform: uppercase;
+ color: var(--gray);
+ margin-bottom: 8px;
+ }
+
+.contact-item a {
+ color: var(--white);
+ text-decoration: none;
+ font-size: 1rem;
+ transition: color 0.3s;
+ word-break: break-all;
+ }
+
+.contact-item a:hover {
+ color: var(--emerald-light);
+ }
+
+ /* footer */
+ footer {
+ padding: 48px 0;
+ text-align: center;
+ border-top: 1px solid rgba(255,255,255,0.05);
+ }
+
+ footer.wordmark {
+ font-size: 1.4rem;
+ letter-spacing: 6px;
+ text-transform: lowercase;
+ color: var(--white);
+ margin-bottom: 8px;
+ }
+
+ footer.wordmark span {
+ color: var(--emerald-light);
+ }
+
+ footer p {
+ color: var(--gray);
+ font-size: 0.85rem;
+ letter-spacing: 2px;
+ }
+
+ footer.cod3 {
+ color: var(--emerald-light);
+ font-weight: 600;
+ }
+
+ @media (max-width: 768px) {
+.nav-links {
+ gap: 16px;
+ }
+
+.hero-logo {
+ width: 140px;
+ }
+
+.hero h1 {
+ letter-spacing: 6px;
+ }
+
+.transmission {
+ padding: 32px 24px;
+ }
+
+.contact-grid {
+ grid-template-columns: 1fr;
+ }
+ }
+ </style>
+</head>
+<body>
+
+ <header>
+ <div class="container">
+ <nav>
+ <div class="logo-wordmark">hy3<span>drax</span></div>
+ <ul class="nav-links">
+ <li><a href="#about">The Cod3</a></li>
+ <li><a href="#collections">Drops</a></li>
+ <li><a href="#contact">Connect</a></li>
+ </ul>
+ </nav>
+ </div>
+ </header>
+
+ <section class="hero">
+ <div class="container" style="text-align:center;">
+
+ <div class="hero-logo">
+ <svg viewBox="0 0 200 200" fill="none" xmlns="[W3](http://www.w3.org/2000/svg")>
+
+ <ellipse cx="100" cy="90" rx="70" ry="50" stroke="#5a57a8" stroke-width="2" fill="none" opacity="0.6"/>
+
+ <circle cx="100" cy="90" r="28" fill="#0f5e3f" opacity="0.8"/>
+ <circle cx="100" cy="90" r="14" fill="#0a0a0a"/>
+ <circle cx="100" cy="90" r="6" fill="#f0f0f0" opacity="0.9"/>
+
+ <circle cx="108" cy="84" r="3" fill="#f0f0f0" opacity="0.4"/>
+
+ <path d="M70 140 Q65 155 70 165 Q75 175 80 165 Q85 155 80 140 Z" fill="#2d2b55" opacity="0.8"/>
+
+ <path d="M120 140 Q115 155 120 165 Q125 175 130 165 Q135 155 130 140 Z" fill="#1a9d6b" opacity="0.8"/>
+
+ <line x1="30" y1="90" x2="50" y2="90" stroke="#5a57a8" stroke-width="1" opacity="0.3"/>
+ <line x1="150" y1="90" x2="170" y2="90" stroke="#1a9d6b" stroke-width="1" opacity="0.3"/>
+ <line x1="100" y1="40" x2="100" y2="60" stroke="#5a57a8" stroke-width="1" opacity="0.3"/>
+ <line x1="100" y1="120" x2="100" y2="140" stroke="#1a9d6b" stroke-width="1" opacity="0.3"/>
+ </svg>
+ </div>
+
+ <h1>
+ <span class="indigo">hy3</span><span class="emerald">drax</span>
+ </h1>
+ <p class="slogan glitch-text" data-text="HY3DRAX THA BRAND FA CLOTHIN">HY3DRAX THA BRAND FA CLOTHIN</p>
+ <p class="tagline">Not just clothing — it's a <em>cod3</em>.</p>
+ </div>
+ </section>
+
+ <section id="about">
+ <div class="container">
+ <div class="transmission">
+ <h2>// <span>TRANSMISSION</span> //</h2>
+ <p>
+ Three years in the making. HY3DRAX isn't just fabric — it's a frequency.
+ Indigo nights, emerald signals, black static, white noise.
+ Every stitch is a line of code. Every drop is a season of war.
+ Plug into the transmission.
+ </p>
+ </div>
+ </div>
+ </section>
+
+ <section id="collections">
+ <div class="container">
+ <h2 style="font-size:1.8rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">
+ <span style="color:var(--indigo-light);">//</span> SEASONAL DROPS <span style="color:var(--emerald-light);">//</span>
+ </h2>
+ <p style="color:var(--gray); letter-spacing:1px; font-size:0.9rem;">WAR3 has no off-season.</p>
+
+ <div class="collections-grid">
+ <div class="collection-card">
+ <h3>SUMMR WAR3</h3>
+ <p>Heat. Haze. Heavy fits.</p>
+ <span class="season">current</span>
+ </div>
+ <div class="collection-card">
+ <h3>FALL WAR3</h3>
+ <p>Decay in layers.</p>
+ <span class="season">archived</span>
+ </div>
+ <div class="collection-card">
+ <h3>WINTR WAR3</h3>
+ <p>Cold code. Silent drops.</p>
+ <span class="season">archived</span>
+ </div>
+ <div class="collection-card">
+ <h3>G3T YOURS N...</h3>
+ <p>Next transmission classified.</p>
+ <span class="season">coming soon</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <section id="contact">
+ <div class="container">
+ <h2 style="font-size:1.8rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">
+ <span style="color:var(--emerald-light);">//</span> CONNECT <span style="color:var(--indigo-light);">//</span>
+ </h2>
+ <p style="color:var(--gray); letter-spacing:1px; font-size:0.9rem; margin-bottom:16px;">
+ Reach the transmission.
+ </p>
+
+ <div class="contact-grid">
+ <div class="contact-item">
+ <div class="label">[Instagram](https://instagram.com/hy3drax")</div>
+ <a href="[Instagram](https://instagram.com/hy3drax") target="_blank">@hy3drax</a>
+ </div>
+ <div class="contact-item">
+ <div class="label">Email</div>
+ <a href="mailto:dimi12family@gmail.com">dimi12family@gmail.com</a>
+ </div>
+ <div class="contact-item">
+ <div class="label">Phone</div>
+ <a href="tel:+14642517821">(464) 251-7821</a>
+ </div>
+ <div class="contact-item">
+ <div class="label">Linktree</div>
+ <a href="[Linktr](https://linktr.ee/K33NGX") target="_blank">[Linktr](https://linktr.ee/K33NGX").ee/K33NGX</a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <footer>
+ <div class="container">
+ <div class="wordmark">hy3<span>drax</span></div>
+ <p>
+ <span class="cod3">not just clothing, it's a cod3.</span>
+ </p>
+ <p style="margin-top:8px; font-size:0.7rem; opacity:0.4;">
+ &copy; 2026 HY3DRAX. All rights reserved.
+ </p>
+ </div>
+ </footer>
+
+</body>
+</html>          "initial upload"
