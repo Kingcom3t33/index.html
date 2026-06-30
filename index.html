@@ -5,6 +5,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>HY3DRAX — Not just clothing, it's a cod3.</title>
  <style>
+ @font-face {
+ font-family: 'Ghastly';
+ src: url('font.ttf') format('truetype');
+ }
+
  * {
  margin: 0;
  padding: 0;
@@ -106,6 +111,7 @@
  letter-spacing: 6px;
  text-transform: lowercase;
  color: var(--white);
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
 .logo-wordmark span {
@@ -152,6 +158,7 @@
 .hero-logo svg {
  width: 100%;
  height: auto;
+ display: block;
  }
 
 .hero h1 {
@@ -161,6 +168,7 @@
  text-transform: lowercase;
  line-height: 1;
  margin-bottom: 16px;
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
 .hero h1.indigo {
@@ -206,6 +214,7 @@
  text-transform: uppercase;
  margin-bottom: 24px;
  color: var(--white);
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
 .transmission h2 span {
@@ -269,6 +278,7 @@
  letter-spacing: 3px;
  text-transform: uppercase;
  margin-bottom: 8px;
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
 .collection-card p {
@@ -287,6 +297,7 @@
  border: 1px solid var(--gray);
  border-radius: 20px;
  color: var(--gray);
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
  /* contact */
@@ -316,6 +327,7 @@
  text-transform: uppercase;
  color: var(--gray);
  margin-bottom: 8px;
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
 .contact-item a {
@@ -328,6 +340,21 @@
 
 .contact-item a:hover {
  color: var(--emerald-light);
+ }
+
+ /* section headings */
+.section-heading {
+ font-size: 1.8rem;
+ letter-spacing: 4px;
+ text-transform: uppercase;
+ margin-bottom: 8px;
+ font-family: 'Ghastly', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+ }
+
+.section-sub {
+ color: var(--gray);
+ letter-spacing: 1px;
+ font-size: 0.9rem;
  }
 
  /* footer */
@@ -343,6 +370,7 @@
  text-transform: lowercase;
  color: var(--white);
  margin-bottom: 8px;
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
  }
 
  footer.wordmark span {
@@ -403,19 +431,13 @@
 
  <div class="hero-logo">
  <svg viewBox="0 0 200 200" fill="none" xmlns="[W3](http://www.w3.org/2000/svg")>
-
  <ellipse cx="100" cy="90" rx="70" ry="50" stroke="#5a57a8" stroke-width="2" fill="none" opacity="0.6"/>
-
  <circle cx="100" cy="90" r="28" fill="#0f5e3f" opacity="0.8"/>
  <circle cx="100" cy="90" r="14" fill="#0a0a0a"/>
  <circle cx="100" cy="90" r="6" fill="#f0f0f0" opacity="0.9"/>
-
  <circle cx="108" cy="84" r="3" fill="#f0f0f0" opacity="0.4"/>
-
  <path d="M70 140 Q65 155 70 165 Q75 175 80 165 Q85 155 80 140 Z" fill="#2d2b55" opacity="0.8"/>
-
  <path d="M120 140 Q115 155 120 165 Q125 175 130 165 Q135 155 130 140 Z" fill="#1a9d6b" opacity="0.8"/>
-
  <line x1="30" y1="90" x2="50" y2="90" stroke="#5a57a8" stroke-width="1" opacity="0.3"/>
  <line x1="150" y1="90" x2="170" y2="90" stroke="#1a9d6b" stroke-width="1" opacity="0.3"/>
  <line x1="100" y1="40" x2="100" y2="60" stroke="#5a57a8" stroke-width="1" opacity="0.3"/>
@@ -447,10 +469,10 @@
 
  <section id="collections">
  <div class="container">
- <h2 style="font-size:1.8rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">
+ <h2 class="section-heading">
  <span style="color:var(--indigo-light);">//</span> SEASONAL DROPS <span style="color:var(--emerald-light);">//</span>
  </h2>
- <p style="color:var(--gray); letter-spacing:1px; font-size:0.9rem;">WAR3 has no off-season.</p>
+ <p class="section-sub">WAR3 has no off-season.</p>
 
  <div class="collections-grid">
  <div class="collection-card">
@@ -479,10 +501,10 @@
 
  <section id="contact">
  <div class="container">
- <h2 style="font-size:1.8rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">
+ <h2 class="section-heading">
  <span style="color:var(--emerald-light);">//</span> CONNECT <span style="color:var(--indigo-light);">//</span>
  </h2>
- <p style="color:var(--gray); letter-spacing:1px; font-size:0.9rem; margin-bottom:16px;">
+ <p class="section-sub" style="margin-bottom:16px;">
  Reach the transmission.
  </p>
 
@@ -520,4 +542,7 @@
  </footer>
 
 </body>
-</html>          "initial upload"
+</html>   
+
+Initial upload 
+
